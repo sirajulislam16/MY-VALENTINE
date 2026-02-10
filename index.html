@@ -22,16 +22,18 @@
       overflow:hidden;
     }
 
-    .card{
-      background:#fff;
-      width:90%;
-      max-width:340px;
-      padding:30px 20px 35px;
-      border-radius:22px;
-      text-align:center;
-      box-shadow:0 25px 45px rgba(0,0,0,.2);
-      animation:pop 0.8s ease;
-    }
+.card{
+  background:#fff;
+  width:90%;
+  max-width:340px;
+  padding:30px 20px 35px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 25px 45px rgba(0,0,0,.2);
+  overflow:hidden; /* 👈 add this */
+  animation:pop 0.8s ease;
+}
+
 
     @keyframes pop{
       0%{transform:scale(.5);opacity:0}
@@ -42,6 +44,15 @@
       font-size:64px;
       animation:float 2.2s ease-in-out infinite;
     }
+
+   #message img{
+      max-width:100%;
+      height:auto;
+      border-radius:12px;
+      display:block;
+      margin:0 auto;
+    }
+
 
     @keyframes float{
       0%,100%{transform:translateY(0)}
@@ -125,7 +136,7 @@
       <button id="no">No</button>
     </div>
 
-    <div id="message"><img src="/MY Valentine/image/oh-yeah.gif"></div>
+    <div id="message"><img src="image/giphy.gif"></div>
   </div>
 
 <script>
