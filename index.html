@@ -79,7 +79,10 @@
     #no{
       background:#eee;
       color:#333;
-      right:30px;
+      right:auto;
+      left: auto;
+      transition: none;
+      
     }
 
     #message{
@@ -115,14 +118,14 @@
 
   <div class="card">
     <div class="emoji">🐻💖</div>
-    <h1>Will you be my Valentine?</h1>
+    <h1>Will you be my Valentine, Munni?</h1>
 
     <div class="buttons">
       <button id="yes">Yes</button>
       <button id="no">No</button>
     </div>
 
-    <div id="message">Yayyy!!! I knew it 🥰💘</div>
+    <div id="message"><img src="/MY Valentine/image/oh-yeah.gif"></div>
   </div>
 
 <script>
@@ -131,16 +134,26 @@
   const msg = document.getElementById('message');
   const music = document.getElementById('music');
 
-  // SUPER DUSTO NO BUTTON 😈
-  const moveNo = () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-  };
+// SUPER DUSTO NO BUTTON 😈 (FIXED PATTERN)
+let step = 0;
 
-  noBtn.addEventListener('mouseenter', moveNo);
-  noBtn.addEventListener('touchstart', moveNo);
+const positions = [
+  { left: '65%', top: '40px' },   // right middle
+  { left: '10%', top: '40px' },   // left middle
+  { left: '65%', top: '0px' },    // right top
+  { left: '10%', top: '60px' }    // left bottom
+];
+
+const moveNo = () => {
+  noBtn.style.left = positions[step].left;
+  noBtn.style.top  = positions[step].top;
+  step = (step + 1) % positions.length;
+};
+
+noBtn.addEventListener('mouseenter', moveNo);
+noBtn.addEventListener('touchstart', moveNo);
+
+
 
   // YES CLICK
   yesBtn.addEventListener('click', () => {
