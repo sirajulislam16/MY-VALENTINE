@@ -93,6 +93,7 @@
       right:auto;
       left: auto;
       transition: none;
+      position: fixed;
       
     }
 
@@ -129,7 +130,7 @@
 
   <div class="card">
     <div class="emoji">🐻💖</div>
-    <h1>Will you be my Valentine, Munni?</h1>
+    <h1>Will you be my Valentine, Faiju?</h1>
 
     <div class="buttons">
       <button id="yes">Yes</button>
@@ -146,19 +147,21 @@
   const music = document.getElementById('music');
 
 // SUPER DUSTO NO BUTTON 😈 (FIXED PATTERN)
-let step = 0;
-
-const positions = [
-  { left: '65%', top: '40px' },   // right middle
-  { left: '10%', top: '40px' },   // left middle
-  { left: '65%', top: '0px' },    // right top
-  { left: '10%', top: '60px' }    // left bottom
-];
 
 const moveNo = () => {
-  noBtn.style.left = positions[step].left;
-  noBtn.style.top  = positions[step].top;
-  step = (step + 1) % positions.length;
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+
+  const padding = 20; // screen edge থেকে দূরত্ব
+
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
+
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+
+  noBtn.style.left = randomX + 'px';
+  noBtn.style.top  = randomY + 'px';
 };
 
 noBtn.addEventListener('mouseenter', moveNo);
